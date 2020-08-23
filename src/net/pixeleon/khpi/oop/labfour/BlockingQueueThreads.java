@@ -59,14 +59,15 @@ class Consumer implements Runnable {
 }
 
 public class BlockingQueueThreads {
+
     public static void main(String[] args) throws InterruptedException {
         BlockingQueue<Integer> mainQueue = new LinkedBlockingDeque<>();
-        Thread producer = new Thread(new Producer(mainQueue, 1000));
+        Thread producer = new Thread(new Producer(mainQueue, 100));
         Thread consumer = new Thread(new Consumer(mainQueue, producer));
         producer.setDaemon(true);
         consumer.setDaemon(true);
-        System.out.println("Press Enter to terminate program");
         Thread.sleep(1000);
+        System.out.println("Press Enter to terminate program");
         producer.start();
         consumer.start();
         new Scanner(System.in).nextLine();
