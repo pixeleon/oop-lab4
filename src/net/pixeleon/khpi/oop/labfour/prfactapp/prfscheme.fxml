@@ -7,10 +7,10 @@
 <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefWidth="275.0" vgap="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.pixeleon.khpi.oop.labfour.prfactapp.PrimeFactorsController">
    <children>
       <Label text="From:" />
-      <TextField fx:id="textFieldFrom" prefWidth="90.0" />
+      <TextField fx:id="textFieldFrom" prefWidth="92.0" />
       <Label text="To:" />
-      <TextField fx:id="textFieldTo" prefWidth="90.0" />
-      <TextArea fx:id="textAreaFactors" prefHeight="260.0" prefWidth="260.0" wrapText="true" />
+      <TextField fx:id="textFieldTo" prefWidth="92.0" />
+      <TextArea fx:id="textAreaFactors" editable="false" prefHeight="260.0" prefWidth="260.0" wrapText="true" />
       <ProgressBar fx:id="progressBar" prefHeight="18.0" prefWidth="260.0" progress="0.0" />
       <Button fx:id="buttonStart" mnemonicParsing="false" onAction="#doStart" text="START" />
       <Button fx:id="buttonSuspend" mnemonicParsing="false" onAction="#doSuspend" text="SUSPEND" />

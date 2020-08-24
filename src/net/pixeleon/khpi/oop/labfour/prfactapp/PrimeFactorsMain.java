@@ -14,7 +14,8 @@ public class PrimeFactorsMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         try {
             FXMLLoader loader = new FXMLLoader();
-            Pane root = loader.load(new FileInputStream("prfscheme.fxml"));
+            Pane root = loader.load(new FileInputStream(
+                    "src\\net\\pixeleon\\khpi\\oop\\labfour\\prfactapp\\prfscheme.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Prime Factors");
