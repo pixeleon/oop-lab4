@@ -44,13 +44,12 @@ class Consumer implements Runnable {
     @Override
     public void run() {
         try{
-            Thread.sleep(10);
             while (producer.isAlive()) {
                 numbersSum += queue.take();
                 numbersCount++;
                 System.out.printf("numbers total = %d, sum = %f, mean = %f%n",
                         numbersCount, numbersSum, numbersSum / numbersCount);
-                Thread.sleep(1000);
+                Thread.sleep(100);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
