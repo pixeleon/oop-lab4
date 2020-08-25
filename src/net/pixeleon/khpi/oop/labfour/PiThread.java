@@ -27,15 +27,13 @@ public class PiThread extends Thread {
         }
     }
 
-    private int getSumElements() {
-        return sumElements;
-    }
+    synchronized public int getSumElements() { return sumElements; }
 
     public static void main(String[] args) throws InterruptedException {
         PiThread piThread = new PiThread((0.01));
-        piThread.start();
         System.out.println("Press Enter to get number of elements calculated...");
-        Thread.sleep(10000);
+        Thread.sleep(1000);
+        piThread.start();
         Scanner scanner = new Scanner(System.in);
         while (piThread.isAlive()) {
             scanner.nextLine();
