@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class FieldsAndMethodsInfo {
     public static void main(String[] args) {
         String className = new Scanner(System.in).next();
-//        className = "java.lang.Math";
         try {
             Class<?> type = Class.forName(className);
             System.out.println("Class name: " + type.getCanonicalName());
