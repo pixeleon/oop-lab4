@@ -15,11 +15,11 @@ public class PrimeFactorsThread implements Runnable {
     private double percentage;
     private boolean suspended;
     private boolean finished;
-    private Runnable displayCurrentNumberFunc;
-    private Runnable displayFactorFunc;
-    private Runnable newLineFunc;
-    private Runnable percentageFunc;
-    private Runnable finishFunc;
+    private final Runnable displayCurrentNumberFunc;
+    private final Runnable displayFactorFunc;
+    private final Runnable newLineFunc;
+    private final Runnable percentageFunc;
+    private final Runnable finishFunc;
 
     public PrimeFactorsThread(Runnable displayCurrentNumberFunc, Runnable displayFactorFunc, Runnable newLineFunc,
                               Runnable percentageFunc, Runnable finishFunc) {
@@ -28,14 +28,6 @@ public class PrimeFactorsThread implements Runnable {
         this.newLineFunc = newLineFunc;
         this.percentageFunc = percentageFunc;
         this.finishFunc = finishFunc;
-    }
-
-    public Thread getFactorsThread() {
-        return factorsThread;
-    }
-
-    public void setFactorsThread(Thread factorsThread) {
-        this.factorsThread = factorsThread;
     }
 
     public int getFrom() {
@@ -96,6 +88,13 @@ public class PrimeFactorsThread implements Runnable {
 
     @Override
     public void run() {
+        try {
+            checkRange();
+        }
+        catch (WrongRangeException e) {
+            System.err.println(e.getMessage());
+            System.err.println("Invalid input. Please check your data for non-integer values.");
+        }
         for (int i = from; i <= to; i++) {
             try {
                 Thread.sleep(1000);
@@ -147,10 +146,11 @@ public class PrimeFactorsThread implements Runnable {
         if (finishFunc != null) {
             Platform.runLater(finishFunc);
         }
+
     }
 
     private void checkRange() throws WrongRangeException {
-        if (getFrom() > getTo()) {
+        if (getFrom() > getTo() || getFrom() < 2) {
             throw new WrongRangeException();
         }
     }
