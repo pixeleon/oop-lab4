@@ -13,6 +13,7 @@ public class ScriptExpressions {
             System.out.println(scriptEngine.eval(expression));
         } catch (ScriptException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
